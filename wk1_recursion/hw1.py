@@ -17,3 +17,18 @@ def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) ->
             cur = cur.next
         cur.next = list1 or list2
         return pre_head.next
+
+
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        def helper(n):
+            if (n == 2) or (n == 1) :
+                return True 
+            elif n <= 0 :
+                return False
+            elif n % 2 == 0:
+                return helper(n/2)
+            else:
+                return False
+        return helper(n)
