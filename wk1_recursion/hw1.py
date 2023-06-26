@@ -1,3 +1,4 @@
+#q1
 from typing import Optional
 
 
@@ -19,7 +20,7 @@ def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) ->
         return pre_head.next
 
 
-
+#q2
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
         def helper(n):
@@ -33,7 +34,7 @@ class Solution:
                 return False
         return helper(n)
 
-
+#q3
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
