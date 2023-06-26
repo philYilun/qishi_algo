@@ -126,14 +126,30 @@ class Solution:
 #q6
 class Solution:
     def makeLargestSpecial(self, s: str) -> str:
+        # start location is 0
         l = 0
+        # log if substring is ascending first and then descending
         balance = 0
+        # log the latest string
         sublist = []
+        # sublist is a list for all fragmented items
+
+        # go through the start of the string, check when the sum of a substring is of balance == 0
+        
+        # 2 pointer?
+        # r is the pointer go through the entire string
+        # l is the pointer to log where the substring started
+        # log all the substring to a list
+        # rank the list descending
+        # combine the list to the final output
+        # recursion is used to do swap within a substring
         for r in range(len(s)):
             balance += 1 if s[r]=='1' else -1
             if balance==0:
                 sublist.append("1" + self.makeLargestSpecial(s[l+1:r])+ "0")
                 l = r+1
         
+        sublist.sort(reverse=True)
+        return ''.join(sublist)
         sublist.sort(reverse=True)
         return ''.join(sublist)
