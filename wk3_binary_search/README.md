@@ -1,4 +1,4 @@
-# week 1: recursion
+# week 3: binary search
 
 ## problem 1
 [Leetcode 167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
