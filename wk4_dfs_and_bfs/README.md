@@ -1,4 +1,4 @@
-# week 3: bfs and dfs
+# week 4: bfs and dfs
 
 ## problem 1
 [Leetcode 127.Word Ladder](https://leetcode.com/problems/word-ladder/)
