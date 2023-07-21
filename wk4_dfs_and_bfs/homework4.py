@@ -185,40 +185,53 @@ class Solution:
 # Q6 79
 
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+# https://leetcode.com/problems/word-search/description/
+# Q6 79
+
+
+"""
+change in place if possible
+try making the input less
+fully understand the order of each of the operations to avoid any error
+understand the sequence of the process
+
+"""
 class Solution:
+    def exist(self, board , word: str) -> bool:
 
-def dfs(board, word, r, c, visited):
-    if not word:
-        return True
+        l = len(board)
+        w = len(board[0])
 
-    if (
-        (r, c) in visited
-        or r < 0
-        or r >= len(board)
-        or c < 0
-        or c >= len(board[0])
-        or board[r][c] != word[0]
-    ):
-        return False
+        def dfs( board, x, y, k):
 
-    return (
-        dfs(board, word[1:], r + 1, c, visited + [(r, c)])
-        or dfs(board, word[1:], r - 1, c, visited + [(r, c)])
-        or dfs(board, word[1:], r, c + 1, visited + [(r, c)])
-        or dfs(board, word[1:], r, c - 1, visited + [(r, c)])
-    )
+            if k > len(word) -1:
+                return True
+            elif (    (x < 0) or (y < 0) or (x >= l) or (y >= w) ) :
+                return False
+            elif ( board[x][y] != word[k]):
+                return False
+            else:
 
+                # print( board[x][y], x, y )
+                # print( board ,"pre"  )
+                cur = board[x][y]
+                board[x][y] = '#'
 
-class Solution:
-    def exist(self, board, word):
-        for r, row in enumerate(board):
-            for c, l in enumerate(row):
-                if dfs(board, word, r, c, []):
+                found = (dfs( board, x + 1, y + 0, k + 1)
+                    or  dfs( board, x , y + 1 , k + 1)
+                    or  dfs( board, x - 1, y ,  k + 1)
+                    or  dfs( board, x , y - 1, k + 1))
+                board[x][y] = cur
+                # print(board,"post")
+                return found
+
+        for i in range(0, l):
+            for j in range(0, w):
+                # if board[i][j] == word[0]:
+                    # We got the first letter
+                # print(i, j, "go through i j")
+                if dfs(board, i, j, 0):
+                    # print("emumerate", i, j)
                     return True
+
         return False
